@@ -6,7 +6,11 @@ import 'package:studentapp2/screens/home_page.dart';
 
 class StudentController extends GetxController {
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-  late TextEditingController nameController, classController, ageController, numberController, addressController;
+  late TextEditingController nameController,
+      classController,
+      ageController,
+      numberController,
+      addressController;
   var name = '';
   var sClass = '';
   var age = '';
@@ -20,7 +24,7 @@ class StudentController extends GetxController {
     nameController = TextEditingController();
     classController = TextEditingController();
     ageController = TextEditingController();
-    numberController=TextEditingController();
+    numberController = TextEditingController();
     addressController = TextEditingController();
     handler = StudentHandler();
     update();
@@ -100,5 +104,16 @@ class StudentController extends GetxController {
     var gender = numberController.text;
     var address = addressController.text;
     addStudents(name, sClass, age, gender, address);
+  }
+
+  void updateForm(int id) {
+    Get.offAll(const HomePage());
+    var name = nameController.text;
+    var sClass = classController.text;
+    var age = ageController.text;
+    var gender = numberController.text;
+    var address = addressController.text;
+    handler!.updateStudent(id, name, sClass, age, gender, address);
+    print('GGGGGGGGGGG:${[name,sClass,age,gender,address]}');
   }
 }

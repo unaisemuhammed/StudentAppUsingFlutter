@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:studentapp2/controller/add_student_page_controller.dart';
-import 'package:studentapp2/controller/drop_down.dart';
 import 'package:studentapp2/db/model_class.dart';
 
 import 'home_page.dart';
@@ -18,12 +17,10 @@ class AddStudent extends StatelessWidget {
   late String genderSelected;
 
   StudentController studentController = Get.put(StudentController());
-  // DropDownController dropDownController = Get.put(DropDownController());
 
   final items = ['Male', 'Female'];
   final items2 = ['Obc', 'General'];
   var value;
-
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -82,29 +79,6 @@ class AddStudent extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           heightsSpacerMaker(),
-
-                          // TextFormField(
-                          //   decoration: InputDecoration(
-                          //       prefixIcon: const Icon(
-                          //         Icons.person_outline,
-                          //         color: Colors.black,
-                          //       ),
-                          //       border: OutlineInputBorder(
-                          //         borderSide: const BorderSide(
-                          //             color: Colors.transparent, style: BorderStyle.none),
-                          //         borderRadius: BorderRadius.circular(13),
-                          //         gapPadding: 5,
-                          //       ),
-                          //       fillColor: const Color(0xffe8e7e3),
-                          //       filled: true),
-                          //   controller: studentController.nameController,
-                          //   onSaved: (name){
-                          //     studentController.name = name!;
-                          //   },
-                          //   validator: (name){
-                          //     return studentController.validationName(name!);
-                          //   },
-                          // ),
                           TextFormField(
                             controller: studentController.nameController,
                             onSaved: (String? value) {
@@ -227,54 +201,6 @@ class AddStudent extends StatelessWidget {
                             ],
                           ),
                           heightsSpacerMaker(),
-                          // Container(
-                          //   padding: EdgeInsets.only(left: 12, right: 12),
-                          //   width: double.infinity,
-                          //   decoration: BoxDecoration(
-                          //       color: const Color(0xFFebebeb),
-                          //       borderRadius: BorderRadius.circular(15),
-                          //       border: Border.all(color: Colors.grey)),
-                          //   child: GetBuilder<DropDownController>(
-                          //     init: DropDownController(),
-                          //     builder: (controller) {
-                          //       return DropdownButtonHideUnderline(
-                          //         child: DropdownButton<String>(
-                          //           isExpanded: true,
-                          //           hint: const Text(
-                          //             'Gender',
-                          //             style: TextStyle(
-                          //                 color: Colors.grey, fontSize: 17),
-                          //           ),
-                          //           value: controller.selectedValue,
-                          //           icon:
-                          //               const Icon(Icons.arrow_drop_down_sharp),
-                          //           iconSize: 25,
-                          //           elevation: 0,
-                          //           dropdownColor: const Color(0xffe8e7e3),
-                          //           style: const TextStyle(color: Colors.black),
-                          //           onChanged: (String? newValue) {
-                          //             controller.selectedValue = newValue!;
-                          //             controller.update();
-                          //             genderSelected = newValue;
-                          //           },
-                          //           items: controller.gender
-                          //               .map<DropdownMenuItem<String>>(
-                          //                   (String value) {
-                          //             return DropdownMenuItem<String>(
-                          //               value: value,
-                          //               child: Text(
-                          //                 value,
-                          //                 style: const TextStyle(
-                          //                     color: Colors.black,
-                          //                     fontSize: 17),
-                          //               ),
-                          //             );
-                          //           }).toList(),
-                          //         ),
-                          //       );
-                          //     },
-                          //   ),
-                          // ),
                           TextFormField(
                             controller: studentController.numberController,
                             onSaved: (String? value) {
@@ -388,8 +314,7 @@ class AddStudent extends StatelessWidget {
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(40),
                         ),
-                        color: Colors.white
-                        ),
+                        color: Colors.white),
                   ),
                 ),
               ],
@@ -399,15 +324,6 @@ class AddStudent extends StatelessWidget {
       ),
     );
   }
-
-  // DropdownMenuItem<String> buildMenuItem(String item) {
-  //   return DropdownMenuItem(
-  //       value: item,
-  //       child: Text(
-  //         item,
-  //         style: const TextStyle(fontSize: 17, color: Colors.black),
-  //       ));
-  // }
 
   Widget widthSpacerMaker() => const SizedBox(
         width: 5,

@@ -6,11 +6,11 @@ import 'package:sqflite/sqlite_api.dart';
 
 import 'model_class.dart';
 
-class StudentHandler extends GetxController{
+class StudentHandler extends GetxController {
   Future<Database> initializeDB() async {
     final String dbPath = await getDatabasesPath();
     return openDatabase(
-      join(dbPath, 'studentlist.db'),
+      join(dbPath, 'studentList.db'),
       version: 1,
       onCreate: (
         database,
@@ -38,6 +38,10 @@ class StudentHandler extends GetxController{
     return queryResult.map((e) => StudentsModel.fromMap(e)).toList();
   }
 
+
+
+
+
   // Future<dynamic> updateStudent(String name,String sClass,String age,String gender,String address) async {
   //   final db = await initializeDB();
   //   var std = await db.update("students", student.toMap(),
@@ -45,14 +49,13 @@ class StudentHandler extends GetxController{
   //   return std;
   // }
 
-  Future<int> updateStudent(int id,String name,String sClass,String age,String gender,String address) async {
+  Future<int> updateStudent(int? id, String name, String sClass, String age,
+      String gender, String address) async {
     final db = await initializeDB();
-
-    final data = {
-      'name': name, 'age': age, 'place': gender, 'email': address
-    };
-
-    final result = await db.update('students', data, where: "id = ?", whereArgs: [id]);
+    print("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMmmmm${[id,name,sClass,age,gender,]}");
+    final data = {'studentName': name,'studentClass':sClass, 'studentAge': age, 'studentGender': gender, 'studentAddress': address};
+    final result =
+        await db.update('students', data, where: "id = ?", whereArgs: [id]);
     return result;
   }
 

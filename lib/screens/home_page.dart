@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:studentapp2/controller/add_student_page_controller.dart';
-import 'package:studentapp2/controller/drop_down.dart';
 import 'package:studentapp2/db/handler.class.dart';
 import 'package:studentapp2/db/model_class.dart';
 import 'package:studentapp2/screens/update_student.dart';
@@ -15,10 +14,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     StudentHandler handler = Get.put(StudentHandler());
-    StudentController studentController = Get.put(StudentController());
-    // DropDownController dropDownController = Get.put(DropDownController());
     final double heightScreen = MediaQuery.of(context).size.height;
-    final double widthScreen = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -62,7 +58,6 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-
                 child: GetBuilder<StudentController>(
                   // init: StudentController(),
                   builder: (controller) {
@@ -86,8 +81,13 @@ class HomePage extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(10),
                                   color: const Color(0xFFebebeb),
                                   child: ListTile(
-                                    contentPadding: const EdgeInsets.only(left: 5),
-                                    // onTap: ()=>Get.to( UpdateStudent(studentsModel:snapshot.data![index])),
+                                    // onTap: (){
+                                    //   Get.to(UpdateStudent());
+                                    // },
+                                    contentPadding:
+                                        const EdgeInsets.only(left: 5),
+                                    onTap: () => Get.to(UpdateStudent(
+                                        students: snapshot.data![index])),
                                     leading: const CircleAvatar(
                                       radius: 35,
                                       backgroundColor: Colors.white,
@@ -102,9 +102,9 @@ class HomePage extends StatelessWidget {
                                           color: Colors.black, fontSize: 22),
                                     ),
                                     subtitle: Text(
-                                      'Class:${snapshot.data![index].studentClass}, Age:${snapshot.data![index].studentAge}\Phone:${snapshot.data![index].studentGender}\nAddress:${snapshot.data![index].studentAddress}',
-                                      style: const TextStyle(fontSize: 15,
-                                          color: Colors.black),
+                                      'Class:${snapshot.data![index].studentClass}, Age:${snapshot.data![index].studentAge}\nPhone:${snapshot.data![index].studentGender}\nAddress:${snapshot.data![index].studentAddress}',
+                                      style: const TextStyle(
+                                          fontSize: 15, color: Colors.black),
                                     ),
                                     trailing: PopupMenuButton(
                                         shape: const RoundedRectangleBorder(
@@ -133,9 +133,8 @@ class HomePage extends StatelessWidget {
                                                       color: Colors.white),
                                                 ),
                                                 onTap: () {
-                                                  handler.deleteStudent(
-                                                      snapshot
-                                                          .data![index].id!);
+                                                  handler.deleteStudent(snapshot
+                                                      .data![index].id!);
                                                   controller.update();
                                                 },
                                                 value: 1,
@@ -159,28 +158,6 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-
-        // Stack(
-        //   children: [
-        //     Positioned(child: Row(
-        //       children: [
-        //
-        //       ],
-        //     )),
-        //     Positioned(
-        //       child: FutureBuilder(
-        //           builder: (BuildContext context, AsyncSnapshot<dynamic> snapShot) {
-        //         return ListView.builder(
-        //           itemCount: 20,
-        //             itemBuilder: (BuildContext context, int index) {
-        //           return const ListTile(
-        //             leading: Icon(Icons.add),
-        //           );
-        //         });
-        //       }),
-        //     ),
-        //   ],
-        // ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Get.to(AddStudent());
