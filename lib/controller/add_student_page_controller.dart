@@ -5,6 +5,7 @@ import 'package:studentapp2/db/model_class.dart';
 import 'package:studentapp2/screens/home_page.dart';
 
 class StudentController extends GetxController {
+  StudentsModel? students;
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   late TextEditingController nameController,
       classController,
@@ -41,6 +42,15 @@ class StudentController extends GetxController {
     addressController.dispose();
     super.onClose();
   }
+
+
+  // void assingn(){
+  //   nameController.text = students!.studentName;
+  //   classController.text = students!.studentClass;
+  //   ageController.text = students!.studentAge;
+  //   numberController.text = students!.studentGender;
+  //   addressController.text = students!.studentAddress;
+  // }
 
   Future<int> addStudents(String sName, String sClass, String sAge,
       String sGender, String sAddress) async {
@@ -114,6 +124,7 @@ class StudentController extends GetxController {
     var gender = numberController.text;
     var address = addressController.text;
     handler!.updateStudent(id, name, sClass, age, gender, address);
-    print('GGGGGGGGGGG:${[name,sClass,age,gender,address]}');
+    print('GAGGING:${[name, sClass, age, gender, address]}');
   }
+
 }

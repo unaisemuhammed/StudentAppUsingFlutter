@@ -5,6 +5,7 @@ import 'package:studentapp2/controller/add_student_page_controller.dart';
 import 'package:studentapp2/db/handler.class.dart';
 import 'package:studentapp2/db/model_class.dart';
 import 'package:studentapp2/screens/update_student.dart';
+import 'package:studentapp2/screens/update_students.dart';
 
 import 'add_student_page.dart';
 
@@ -13,6 +14,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    StudentController studentController = Get.put(StudentController());
     StudentHandler handler = Get.put(StudentHandler());
     final double heightScreen = MediaQuery.of(context).size.height;
     return SafeArea(
@@ -59,7 +61,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 child: GetBuilder<StudentController>(
-                  // init: StudentController(),
+                  init: StudentController(),
                   builder: (controller) {
                     return FutureBuilder(
                       future: handler.retrieveStudentList(),
@@ -69,25 +71,17 @@ class HomePage extends StatelessWidget {
                           return ListView.builder(
                             itemCount: snapshot.data!.length,
                             itemBuilder: (BuildContext context, int index) {
-                              // var name=snapshot.data![index].studentName;
-                              // var sClass=snapshot.data![index].studentClass;
-                              // var age=snapshot.data![index].studentAge;
-                              // var gender=snapshot.data![index].studentGender;
-                              // var address=snapshot.data![index].studentName;
-                              // int? id =snapshot.data![index].id;
                               return Padding(
                                 padding: const EdgeInsets.all(2.0),
                                 child: Material(
                                   borderRadius: BorderRadius.circular(10),
                                   color: const Color(0xFFebebeb),
                                   child: ListTile(
-                                    // onTap: (){
-                                    //   Get.to(UpdateStudent());
-                                    // },
-                                    contentPadding:
-                                        const EdgeInsets.only(left: 5),
                                     onTap: () => Get.to(UpdateStudent(
                                         students: snapshot.data![index])),
+                                    contentPadding:
+                                        const EdgeInsets.only(left: 5),
+                                    // onTap: () =>
                                     leading: const CircleAvatar(
                                       radius: 35,
                                       backgroundColor: Colors.white,
@@ -118,14 +112,6 @@ class HomePage extends StatelessWidget {
                                         ),
                                         color: const Color(0xFF191A33),
                                         itemBuilder: (context) => [
-                                              // PopupMenuItem(
-                                              //   child: Text(
-                                              //     "Delete",
-                                              //     style:
-                                              //  TextStyle(color: Colors.white)
-                                              //   ),
-                                              //   value: 1,
-                                              // ),
                                               PopupMenuItem(
                                                 child: const Text(
                                                   'Delete',
@@ -160,6 +146,11 @@ class HomePage extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+            studentController.nameController.clear();
+            studentController.classController.clear();
+            studentController.ageController.clear();
+            studentController.addressController.clear();
+            studentController.numberController.clear();
             Get.to(AddStudent());
           },
           child: const Icon(

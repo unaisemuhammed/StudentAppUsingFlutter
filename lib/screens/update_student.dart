@@ -277,15 +277,15 @@ class _UpdateStudentState extends State<UpdateStudent> {
                         topRight: Radius.circular(40),
                       ),
                       color: Colors.white
-                      // gradient: LinearGradient(
-                      //   begin: Alignment.centerRight,
-                      //   end: Alignment.centerLeft,
-                      //   colors: [
-                      //     Color(0xFFebebeb),
-                      //     Color(0xFFebebeb),
-                      //   ],
-                      // ),
-                      ),
+                    // gradient: LinearGradient(
+                    //   begin: Alignment.centerRight,
+                    //   end: Alignment.centerLeft,
+                    //   colors: [
+                    //     Color(0xFFebebeb),
+                    //     Color(0xFFebebeb),
+                    //   ],
+                    // ),
+                  ),
                 ),
               ),
             ],
@@ -305,10 +305,10 @@ class _UpdateStudentState extends State<UpdateStudent> {
   }
 
   Widget widthSpacerMaker() => const SizedBox(
-        width: 5,
-      );
+    width: 5,
+  );
 
   Widget heightsSpacerMaker() => const SizedBox(
-        height: 15,
-      );
+    height: 15,
+  );
 }
