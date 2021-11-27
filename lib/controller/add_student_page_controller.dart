@@ -17,6 +17,7 @@ class StudentController extends GetxController {
   var age = '';
   var number = '';
   var address = '';
+  var indexId;
   StudentHandler? handler;
 
   @override
@@ -44,13 +45,14 @@ class StudentController extends GetxController {
   }
 
 
-  // void assingn(){
-  //   nameController.text = students!.studentName;
-  //   classController.text = students!.studentClass;
-  //   ageController.text = students!.studentAge;
-  //   numberController.text = students!.studentGender;
-  //   addressController.text = students!.studentAddress;
-  // }
+  Future<void> updateControllAssigning(var index)async {
+    indexId =index;
+    nameController.text = index.studentName;
+    classController.text = index.studentClass;
+    ageController.text = index.studentAge;
+    numberController.text =index!.studentGender;
+    addressController.text = index.studentAddress;
+  }
 
   Future<int> addStudents(String sName, String sClass, String sAge,
       String sGender, String sAddress) async {

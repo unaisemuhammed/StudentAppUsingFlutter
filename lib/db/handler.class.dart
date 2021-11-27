@@ -13,9 +13,9 @@ class StudentHandler extends GetxController {
       join(dbPath, 'studentList.db'),
       version: 1,
       onCreate: (
-        database,
-        version,
-      ) async {
+          database,
+          version,
+          ) async {
         print('CreatingList');
         await database.execute(
             'CREATE TABLE students(id INTEGER PRIMARY KEY,studentName TEXT NOT NULL,studentClass TEXT NOT NULL,studentAge TEXT NOT NULL,studentGender TEXT NOT NULL,studentAddress TEXT NOT NULL )');
@@ -55,7 +55,7 @@ class StudentHandler extends GetxController {
     print("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMmmmm${[id,name,sClass,age,gender,]}");
     final data = {'studentName': name,'studentClass':sClass, 'studentAge': age, 'studentGender': gender, 'studentAddress': address};
     final result =
-        await db.update('students', data, where: "id = ?", whereArgs: [id]);
+    await db.update('students', data, where: "id = ?", whereArgs: [id]);
     return result;
   }
 

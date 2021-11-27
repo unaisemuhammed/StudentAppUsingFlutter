@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:studentapp2/controller/add_student_page_controller.dart';
 import 'package:studentapp2/db/handler.class.dart';
 import 'package:studentapp2/db/model_class.dart';
-import 'package:studentapp2/screens/update_student.dart';
 import 'package:studentapp2/screens/update_students.dart';
 
 import 'add_student_page.dart';
@@ -77,10 +76,14 @@ class HomePage extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(10),
                                   color: const Color(0xFFebebeb),
                                   child: ListTile(
-                                    onTap: () => Get.to(UpdateStudent(
-                                        students: snapshot.data![index])),
+                                    onTap: () {
+                                      var indexer=snapshot.data![index];
+                                      studentController.updateControllAssigning(indexer);
+                                      Get.to(UpdateStudent(
+                                          students: snapshot.data![index]));
+                                    },
                                     contentPadding:
-                                        const EdgeInsets.only(left: 5),
+                                    const EdgeInsets.only(left: 5),
                                     // onTap: () =>
                                     leading: const CircleAvatar(
                                       radius: 35,
@@ -112,20 +115,20 @@ class HomePage extends StatelessWidget {
                                         ),
                                         color: const Color(0xFF191A33),
                                         itemBuilder: (context) => [
-                                              PopupMenuItem(
-                                                child: const Text(
-                                                  'Delete',
-                                                  style: TextStyle(
-                                                      color: Colors.white),
-                                                ),
-                                                onTap: () {
-                                                  handler.deleteStudent(snapshot
-                                                      .data![index].id!);
-                                                  controller.update();
-                                                },
-                                                value: 1,
-                                              ),
-                                            ]),
+                                          PopupMenuItem(
+                                            child: const Text(
+                                              'Delete',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                            onTap: () {
+                                              handler.deleteStudent(snapshot
+                                                  .data![index].id!);
+                                              controller.update();
+                                            },
+                                            value: 1,
+                                          ),
+                                        ]),
                                   ),
                                 ),
                               );

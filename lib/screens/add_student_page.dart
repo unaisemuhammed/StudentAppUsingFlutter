@@ -122,7 +122,7 @@ class AddStudent extends StatelessWidget {
                                   width: widthScreen / 2,
                                   child: TextFormField(
                                     controller:
-                                        studentController.classController,
+                                    studentController.classController,
                                     onSaved: (value) {
                                       studentController.sClass = value!;
                                     },
@@ -140,14 +140,14 @@ class AddStudent extends StatelessWidget {
                                       filled: true,
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius:
-                                            BorderRadius.circular(5.0),
+                                        BorderRadius.circular(5.0),
                                         borderSide: BorderSide(
                                           color: Colors.blue.withOpacity(.6),
                                         ),
                                       ),
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius:
-                                            BorderRadius.circular(15.0),
+                                        BorderRadius.circular(15.0),
                                         borderSide: const BorderSide(
                                           color: Colors.grey,
                                           width: 1.0,
@@ -181,14 +181,14 @@ class AddStudent extends StatelessWidget {
                                       filled: true,
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius:
-                                            BorderRadius.circular(5.0),
+                                        BorderRadius.circular(5.0),
                                         borderSide: BorderSide(
                                           color: Colors.blue.withOpacity(.6),
                                         ),
                                       ),
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius:
-                                            BorderRadius.circular(15.0),
+                                        BorderRadius.circular(15.0),
                                         borderSide: const BorderSide(
                                           color: Colors.grey,
                                           width: 1.0,
@@ -326,10 +326,10 @@ class AddStudent extends StatelessWidget {
   }
 
   Widget widthSpacerMaker() => const SizedBox(
-        width: 5,
-      );
+    width: 5,
+  );
 
   Widget heightsSpacerMaker() => const SizedBox(
-        height: 15,
-      );
+    height: 15,
+  );
 }
